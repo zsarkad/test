@@ -1,9 +1,5 @@
-FROM readytalk/nodejs
-
-# Add our configuration files and scripts
-WORKDIR /app
-ADD . /app
+FROM node:10-alpine
+WORKDIR /usr/src/app
+COPY package*.json ./
 RUN npm install
-EXPOSE 80
-
-ENTRYPOINT ["/nodejs/bin/npm", "start"]
+COPY . .
